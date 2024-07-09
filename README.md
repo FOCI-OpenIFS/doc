@@ -2,6 +2,13 @@
 
 [toc] 
 
+## Further info
+
+* [FOCI-OpenIFS 4.0](notes_for_focioifs-4.0.md)
+* [FOCI-OpenIFS-AGRIF 4.0](notes_for_focioifs-agrif-4.0.md)
+* [OpenIFS](https://confluence.ecmwf.int/display/OIFS/OpenIFS+Home)
+* [NEMO](https://sites.nemo-ocean.io/user-guide/)
+
 ## You will need
 
 
@@ -84,11 +91,11 @@ cd esm/esm
 ./install.sh
 ```
 
-Switch to olaf branch
+Switch to GEOMAR branch
 ```bash
 cd
 cd esm/esm_tools/
-git checkout feature/ibs_olaf
+git checkout geomar_dev
 ```
 
 
@@ -170,6 +177,15 @@ cd
 cd esm/esm_tools/runscripts/focioifs/
 esm_runscripts focioifs4-piCtrl-initial-olaf.yaml -e my_first_exp 
 ```
+
+## Changing model parameters (scenario, configuration etc)
+
+The runscript for FOCI-OpenIFS 4.0 on NESH (Kiel University machine) explains the parameters set for a coupled experiment: `runscripts/focioifs/focioifs4-piCtl-initial-nesh.yaml`. 
+
+For examples on how to change namelist parameters for OpenIFS, see runscript for OpenIFS on NESH: `runscripts/oifs/oifs-43r3-climMEMODEL-nesh.yaml`. 
+
+These examples should be enough to get an idea on how to change scenario (piControl, historical, 4xCO2 etc), model resolution, time step. 
+
 
 ## Join the communities
 

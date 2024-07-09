@@ -109,3 +109,9 @@ ln_zps = 1
 and these settings override what is set in configuration namelists. Model is compiled with `key_qco`. 
 `namelist_ref` has `ln_vvl_zstar = .true.`. 
 
+
+## Configurations
+
+### NWPAC10
+
+![NWPAC10 grid](nwpac10_domain.png)
