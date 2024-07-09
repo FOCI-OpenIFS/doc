@@ -28,6 +28,12 @@ You'll need to load a module with git LFS support. Typically (`glogin`, `levante
 module load git
 ```
 
+On `nesh` you will need
+```bash
+module load oneapi2023-env
+module load git-lfs
+```
+
 On `olaf` you will need 
 
 ```bash
@@ -52,13 +58,14 @@ cd esm_tools/utils/
 
 ### Install ESM-Tools
 
-First load an anaconda environment. 
+First load an anaconda environment (on most machines):  
 ```bash
 module load anaconda3
 ```
 or similar. 
 Run `python --version` to check that python is not newer than 3.10. 
 
+`NESH` does not have an anaconda environment, so you'll need to install your own (see Miniconda further down). 
 
 Then install ESM-Tools
 ```bash
@@ -104,14 +111,14 @@ git checkout geomar_dev
 Github: 
 * Log into github.com. 
 * Profile picture upper right corner -> Settings -> Developer settings -> Personal access tokens -> Generate new token (classic)
-* Click "repo" box. Name it "olaf". Click Generate token. 
+* Click "repo" box. Name it after the machine, e.g. `olaf` or `nesh`. Click Generate token. 
 * Copy code
 
 Gitlab (DKRZ, GEOMAR, etc)
 * Log into gitlab e.g. gitlab.dkrz.de or git.geomar.de
 * Click your profile logo near the `+` sign in the top left. 
 * Choose "Preferences" -> "Access Tokens" -> "Add new token". 
-* Name it "olaf", empty the "expiration date" box, click "read_repository" and "write_repository", "Create personal access token". 
+* Name it after the machine, e.g. `olaf` or `nesh`, empty the "expiration date" box, click "read_repository" and "write_repository", "Create personal access token". 
 * Copy code
 
 Make a `${HOME}/.netrc` file on the HPC (`glogin`, `levante`, `olaf` etc) with contents
@@ -141,6 +148,11 @@ On `glogin` or `blogin`:
 
 ```bash
 ESM_DIR=/scratch/usr/$USER/esm-experiments/
+```
+
+On `nesh`:
+```bash
+ESM_DIR=$WORK/esm-experiments/
 ```
 
 Then do
