@@ -4,6 +4,7 @@
 
 ## Further info
 
+* [Running OpenIFS atmosphere only](openifs_instructions.md)
 * [FOCI-OpenIFS 4.0](notes_for_focioifs-4.0.md)
 * [FOCI-OpenIFS-AGRIF 4.0](notes_for_focioifs-agrif-4.0.md)
 * [OpenIFS](https://confluence.ecmwf.int/display/OIFS/OpenIFS+Home)

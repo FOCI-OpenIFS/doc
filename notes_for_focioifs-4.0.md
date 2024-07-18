@@ -275,6 +275,45 @@ Namelist:
 /
 ```
 
+## XIOS settings
+
+`iodef.xml` (not all, but the important parts):
+
+```xml
+      <!-- XIOS takes the size of the domain and tries to work out the optimal buffer size -->
+      <!-- Sometimes (with lots of output fields) this might not be enough -->
+      <!-- It is often a good idea to increase the buffers by a factor 2 or 3 --> 
+      <!-- Also, one should test performance vs memory mode -->
+      <variable_group id="buffer" >
+        <variable id="optimal_buffer_size" type="string"> performance </variable>
+        <variable id="buffer_size_factor"  type="double"> 3.0         </variable>
+      </variable_group>
+      
+      <!-- Note: In new XIOS and NEMO 4, OASIS_ENDDEF is called by -->
+      <!-- XIOS and not the model components (as in NEMO 3.6) -->
+      <!-- One can see the difference in src/OCE/SBC/cpl_oasis3.F90 in NEMO -->
+      <!-- or src/cplng/oasis/cplng_data_mod.F90 in OpenIFS --> 
+      <variable_group id="parameters" >
+        <variable id="call_oasis_enddef" type="bool">true</variable>
+      </variable_group>
+```
+
+`context_ifs.xml` contains one very important part: 
+
+```xml
+    <!-- 1) NFRHIS and NFRPOS must be the same --> 
+    <!-- 2) This is the frequency at which XIOS is called --> 
+    <!--    i.e. it sets the shortest output frequency --> 
+    <!-- 3) Negative number means hours -->
+    <!-- So, in order to output 3hr data, these must be set to --> 
+    <!-- -3 or -1. If set to -6 and you request 3hr output, -->
+    <!-- the model will simply crash (and its a hard problem to debug) -->
+    <variable_group id="fullpos_freq">
+      <variable id="nfrhis" name="NFRHIS" type="int"> -6 </variable>
+      <variable id="nfrpos" name="NFRPOS" type="int"> -6 </variable>
+    </variable_group>
+```
+
 ## OASIS settings
 
 * Coupling step: 3600s
@@ -292,6 +331,8 @@ Namelist:
 * Tuning of model. Currently too cold!
 * Make new ocean grid, eORCA05 L75
 * Configure strait flux calculations (`diadct.F90`)
+* Switch to TEOS-10 ? 
+* Upgrade to OpenIFS 48r1 ? 
 
 
 
